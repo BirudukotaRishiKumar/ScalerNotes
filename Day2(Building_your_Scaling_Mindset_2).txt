@@ -1,0 +1,90 @@
+Prerequisites:
+HLD: Quality and resilience of infra structure
+LLD: Quality of Code, Architecure or design of Code
+
+To Learn HLD, Good at:
+1. Write Code
+2. DSA
+3. Computer Fundamentals: Networks, Databases, OS
+4.LLD:
+
+Every DNS has the copy of ICANN
+
+1 Bit => 0 or 1
+1 Byte => 8 Bits
+1 KB => 10^3 Bytes
+1 MB => 10^6 Bytes
+1 GB => 10^9 Bytes
+1 Tera
+1 Peta
+1 Exha
+1 Euata
+
+A person keep on Increasing the capacity of his HDD by paying more, C'z he's getting more views for his website and saving on his website....Vertical Scaling (cost more)
+
+==>Another thing he can do is..He can buy multiple laptops(Horizontal scaling) with less HDD V.V.Difficult. (HOW TO SOLVE THESE DIFFICULTIES IS HLD)
+
+Linus Tech Tips: Build own
+
+
+HLD Curriculum:
+1. Load Balancing & Consistent Hashing
+2. Caching: Local, Global & Distributed
+Eviction
+Invalidation policies: write back TTL
+case studies: FB News Feed is cached.
+Code Judge @scaler
+leaderboard @scaler
+
+3. CAP, PACELE Theroem 
+Eventual Consistency
+4. Master slave replication:
+Quarom configuration
+Tunable consistency
+Leader election
+5. SQL vs NoSQL:
+Acid Base 
+Keyvalue Redis/Dynamo DB
+Doc storage:MongoDB
+Col Fam DB Cassandra/Hbase
+how to choose DB
+6. Shading: How to 
+7. How no SQL DB works internally:LSM Frees, Bloom Filters
+8. Case Study or design google typehead
+9.Case Study @FB Messenger: Anshumal Did this!
+10. Case Study @zookeeper
+11. Messaging works like kafka
+12. CS @Elastic Search, S3/Files Storage, Uber/Nearest Neighbour: Quad trees, Rate limiter/ID generation, Hotstar
+13. Microservices/Monolith/Event Driven Architecture/Pubs Sub/ SAGA patterns/Distributed Transactions
+14. Case Study @IRCTC
+
+
+UUID/GUID: Long Random String
+
+Store data in DB: 1,2,3,4
+Exposing data: a8nauw8r0-ei 9r23e-(random)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
