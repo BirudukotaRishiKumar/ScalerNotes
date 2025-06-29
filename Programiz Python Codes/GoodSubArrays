@@ -1,0 +1,55 @@
+#Good Subarrays 
+#Brute Force Approach
+A = [1, 2, 3, 4, 5]
+B = 4
+n=len(A)
+count=0
+for i in range(n):
+    for j in range(i,n):
+        if len(A[i:j+1])%2==0 and sum(A[i:j+1])<B:
+            count+=1
+        elif len(A[i:j+1])%2!=0 and sum(A[i:j+1])>B:
+            count+=1
+print(count)
+
+#Optimised Approach
+print("#Optimised Approach")
+A = [1, 2, 3, 4, 5]
+B = 4
+n=len(A)
+count=0
+prefixArray=[] #[1, 3, 6, 10, 15]
+temp=0
+for i in A:
+    temp+=i
+    prefixArray+=[temp]
+print(prefixArray) #[1, 3, 6, 10, 15]
+
+for i in range(n):
+    sumOfEachSubArray=0
+    for j in range(i,n):
+        if i!=0:
+            sumOfEachSubArray=prefixArray[j]-prefixArray[i-1]
+        else:
+            sumOfEachSubArray=prefixArray[j]
+        lengthOfSubArray=j-i+1
+        if lengthOfSubArray%2==0 and sumOfEachSubArray<B:
+            count+=1
+        elif lengthOfSubArray%2!=0 and sumOfEachSubArray>B:
+            count+=1
+print(count)
+
+
+#More Optimised.. Creating subArray on go!
+A = [1, 2, 3, 4, 5]
+B = 4
+n=len(A)
+count=0
+for i in range(n):
+    sumOfEachSubArray=0
+    for j in range(i,n):
+        sumOfEachSubArray+=A[j]
+        lengthOfSubArray=j-i+1
+        if (lengthOfSubArray%2==0 and sumOfEachSubArray<B) or (lengthOfSubArray%2!=0 and sumOfEachSubArray>B):
+            count+=1
+print(count)

@@ -1,0 +1,20 @@
+#Largest Number array from array
+import functools
+
+def compare(a,b):
+    x= str(a)
+    y=str(b)
+    if x+y < y+x:  
+        return 1
+    elif x+y > y+x:
+        return -1
+    else:
+        return 0
+a=[3,30,34,5,9]
+ans=sorted(a,key=functools.cmp_to_key(compare))
+if ans[0]=="0":
+    return 0
+print(ans)
+#OP: [9, 5, 34, 3, 30]
+
+

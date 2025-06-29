@@ -1,0 +1,168 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+
+#1. Adding a node at the end
+def addnode(value):
+    global head
+    if(head==None):
+        head=Node(value)
+    else:
+        temp=head
+        while(temp.next!=None):
+            temp=temp.next
+        temp.next=Node(value)
+
+#2. printing the LinkedList
+def printLinkedList(head):
+    if head==None:
+        return "No Nodes present"
+    temp=head
+    ll=[]
+    while(temp!=None):
+        ll.append(temp.data)
+        #print(temp.data,head.data)
+        temp=temp.next
+    return f"LinkedList: {ll}, Head: {head.data}, {getSize()}"
+
+#3. Get the Kth Element in Linkedlist
+def getTheKthElement(head,k):
+    if head==None:
+        return "No Nodes present"
+    tempHead=head
+    if k==0:
+        print(tempHead.data)
+    else:
+        for i in range(k):
+            tempHead=tempHead.next
+            if tempHead==None:
+                return "None"
+        return f"{k}th Element is: {tempHead.data}"
+        
+#4. Check if K exists or not!
+def checkElementK(k):
+    tempHead=head
+    while tempHead!=None:
+        if tempHead.data==k:
+            return f"Yes, {k} in LinkedList"
+        tempHead=tempHead.next
+    return f"No, {k} not in LinkedList"
+
+
+#5. Get the size of linkedList
+def getSize():
+    tempHead=head
+    c=0
+    while tempHead:
+        c+=1
+        tempHead=tempHead.next
+    return f"Size: {c}"
+
+
+#6. Insert a new Node at index i
+def InsertANode(num,index):
+    global head
+    tempHead=head
+    newNode=Node(num)
+    if tempHead==None:
+        return "No Nodes present"
+    if index==0:
+        newNode.next=tempHead
+        head=newNode
+    else:
+        for i in range(index-1):
+           tempHead=tempHead.next
+        newNode.next=tempHead.next
+        tempHead.next=newNode
+    return printLinkedList(head)
+
+#7. Delete first occurance of num in ll
+def delete(num): 
+    global head
+    if head.data==num:
+        head=head.next
+        return printLinkedList(head)
+
+    tempHead=head
+    while tempHead.next!=None:
+        if tempHead.next.data==num:
+            tempHead.next=tempHead.next.next
+            return printLinkedList(head)
+        tempHead=tempHead.next
+    return printLinkedList(head)
+            
+#8. Delete an Element at ith Index
+def deleteAtIndex(index):
+    global head
+    if index==0:
+        head=head.next
+        return printLinkedList(head)
+    tempHead=head
+    for i in range(index-1):
+        tempHead=tempHead.next
+    tempHead.next=tempHead.next.next
+    return printLinkedList(head)
+
+#9. Reverse LinkedList
+def reverseLinkedList():
+    global head
+    tempHead=head
+    h1=tempHead
+    h2=tempHead.next
+    while(h2!=None):
+        temp=h2.next
+        h2.next=h1
+        h1=h2
+        h2=temp
+    head.next=None
+    head=h1
+    return printLinkedList(head)
+    
+        
+
+
+
+
+
+#Start of the code
+A=[1,2,3]
+A=[0,1,2,3,4,5,6,7,8,9]
+# A=[]
+
+head=None
+
+#1. Add a node at the end
+for num in A:
+    addnode(num)
+    
+#2. Printing the LinkedList
+print(printLinkedList(head))
+    
+#3. Get the Kth Element in Linkedlist
+k=0
+print(getTheKthElement(head,k))
+
+#4. Check if K exists or not!
+k=7
+print(checkElementK(k))
+
+#5. Get the size of linkedList
+print(getSize())
+
+#6. Insert a new node at index i
+num=120
+index=10
+print(InsertANode(num,index))
+
+#7. Delete first occurance of num in ll
+num=120
+print(delete(num))
+
+#8. Delete an Element at ith Index
+index=0
+print(deleteAtIndex(index))
+
+#9. Reverse LinkedList
+print(reverseLinkedList())
+

@@ -1,0 +1,20 @@
+nums=[5,4,3, 10,6,24, 10,11]
+nums=[4,10,1,6,3,3]
+nums=[7,1,4,3,7,10]
+n=len(nums)
+i=0
+j=1
+cs=nums[i]
+ans=cs
+while(i<n and j<=n-1):
+    if nums[i]>nums[j]:
+        cs+=nums[j]
+        i+=1
+        j+=1
+    else:
+        cs=nums[j]
+        i+=1
+        j+=1
+    ans=max(ans,cs)
+    print(cs)
+print("Answer",ans)

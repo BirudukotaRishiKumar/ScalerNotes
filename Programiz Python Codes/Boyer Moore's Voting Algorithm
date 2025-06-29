@@ -1,0 +1,34 @@
+#Boyer-Moores Voting Algorithm
+A=[3,4,3,6,1,3,2,5,3,3,3]
+candidate=A[0]
+count=1
+n=len(A)
+for i in range(1,n):
+    if candidate==A[i]: #If Candidate is Same then Increase the Count
+        count+=1
+    else: #If Candidate is Different then Decrease the Count
+        count-=1
+    if count<0: #If count is less than 0, change the candidate and set count to 1
+        candidate=A[i]
+        count=1
+    #print(candidate)
+if A.count(candidate)>n//2:
+    print(candidate) 
+#ChatGPT
+A=[3,4,3,6,1,3,2,5,3,3,3]
+candidate=None
+count=0
+n=len(A)
+for num in A:
+    if count==0:
+        candidate=num
+    if num==candidate:
+        count+=1
+    else:
+        count-=1
+# ans=0
+# for i in A:
+#     if candidate==i:
+#         ans+=1
+if A.count(candidate)>n//2:
+    print(candidate) 

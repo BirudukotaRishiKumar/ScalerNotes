@@ -1,0 +1,40 @@
+def spiral(m,i,j,n):
+    for count in range(n-1):
+        print(m[i][j])
+        j+=1
+    
+    for count in range(n-1):
+        print(m[i][j])
+        i+=1
+    
+    for count in range(n-1):
+        print(m[i][j])
+        j-=1
+    
+    for count in range(n-1):
+        print(m[i][j])
+        i-=1
+
+m = [
+    [1,  2,  3,   4,  5,  6],
+    [7,  8,  9,  10, 11, 12],
+    [13, 14, 15, 16, 17, 18],
+    [19, 20, 21, 22, 23, 24],
+    [25, 26, 27, 28, 29, 30],
+    [31, 32, 33, 34, 35, 36]
+]
+m = [
+    [3, 8, 2],
+    [6, 9, 4],
+    [5, 7, 3],
+]
+n=len(m)
+i=0
+j=0
+while (n>=2):
+    spiral(m,i,j,n)
+    n=n-2
+    i=i+1
+    j=j+1
+if n==1:
+    print(m[i][j])

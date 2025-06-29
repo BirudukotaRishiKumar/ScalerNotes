@@ -1,0 +1,62 @@
+#Cycle sort:
+#Approach:
+Algorithm
+Initialize a variable n to the length of nums.
+
+Use cycle sort to place positive elements smaller than n at the correct index.
+
+Initialize a variable i to 0.
+Iterate through the elements in nums:
+Set a variable correctIdx to nums[i] - 1.
+If the nums[i] is greater than zero, less than or equal to n, and does not equal nums[correctIdx], swap the element at nums[i] with the element at nums[correctIdx].
+Otherwise, increment i.
+Iterate through sorted nums and return the smallest missing positive number.
+
+For each element in nums, if nums[i] does not equal i + 1, return i + 1, the smallest missing positive number.
+Return n + 1, the smallest missing positive number when each number in nums is in the correct position.
+
+
+#CODE:
+nums= [3,4,-1,1] 
+nums = [1,2,0]
+n=len(nums) 
+for i in range(n):
+    while 1<=nums[i]<=n and nums[i]!=nums[nums[i]-1]:
+        temp=nums[nums[i]-1]
+        nums[nums[i]-1]=nums[i]
+        nums[i]=temp
+print(nums)
+isFound=False
+for i in range(n):
+    if nums[i]!=i+1:
+        isFound=True
+        print(i+1)
+        break
+if not isFound:
+    print(n+1)
+
+#Leetcode
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        # Use cycle sort to place positive elements smaller than n
+        # at the correct index
+        i = 0
+        while i < n:
+            correct_idx = nums[i] - 1
+            if 0 < nums[i] <= n and nums[i] != nums[correct_idx]:
+                # swap
+                nums[i], nums[correct_idx] = nums[correct_idx], nums[i]
+            else:
+                i += 1
+
+        # Iterate through nums
+        # return smallest missing positive integer
+        for i in range(n):
+            if nums[i] != i + 1:
+                return i + 1
+
+        # If all elements are at the correct index
+        # the smallest missing positive number is n + 1
+        return n + 1
+    

@@ -1,0 +1,25 @@
+#All Elements occurs twice except one, Find that num
+def findingUniqueElement(a,n):
+    s=0
+    e=n-1
+    while(s<=e):
+        m=s+(e-s)//2
+        if a[m-1]!=a[m]!=a[m+1] or m==n-1 or m==0:
+            return a[m]
+        else:
+            if a[m-1]==a[m]:
+                m=m-1
+            noOfEle=m-s
+            if noOfEle%2!=0: #Go Left
+                e=m-1
+            else:
+                s=m+2
+    
+            
+    
+a = [1,2, 2,6, 6, 3, 3, 9, 9, 5, 5]
+# a=[1,2,2]
+n=len(a)
+ans=findingUniqueElement(a,n)
+print(ans)
+k=[1,2,2]

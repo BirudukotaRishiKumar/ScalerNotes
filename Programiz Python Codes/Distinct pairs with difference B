@@ -1,0 +1,45 @@
+#Distinct pairs with difference B
+#Brute Force
+A = [1, 1, 1, 2, 2]
+B = 0
+A = [8, 12, 16, 4, 0, 20]
+B = 4
+A = [1, 5, 3, 4, 2]
+B = 3
+A=[8,5,1,10,5,9,9,3,5,6,6,2,8,2,2,6,3,8,7,2,5,3,4,3,3,2,7,9,6,8,7,2,9,10,3,8,10,6,5,4,2,3]
+B=3
+n=len(A)
+resultSet=set()
+for i in range(n):
+    for j in range(i+1,n):
+        diff=A[j]-A[i]
+        diff2=A[i]-A[j]
+        if diff==B: #i!=j and i+1,n same
+            resultSet.add((A[i],A[j]))
+        if diff2==B:
+            resultSet.add((A[j],A[i]))
+            #print(A[i],A[j],i,j)
+print("SET",resultSet,len(resultSet))
+
+
+#Optimised: Using set
+A = [1, 1, 1, 2, 2]
+B = 0
+A = [8, 12, 16, 4, 0, 20]
+B = 4
+A = [1, 5, 3, 4, 2]
+B = 3
+A=[8,5,1,10,5,9,9,3,5,6,6,2,8,2,2,6,3,8,7,2,5,3,4,3,3,2,7,9,6,8,7,2,9,10,3,8,10,6,5,4,2,3]
+B=3
+n=len(A)
+resultSet=set()
+frequencySet=set()
+for i in range(n):
+    target1=A[i]+B
+    target2=A[i]-B
+    if (target1 in frequencySet):
+        resultSet.add((A[i],target1))
+    if  (target2 in frequencySet):
+        resultSet.add((target2,A[i]))
+    frequencySet.add(A[i])
+print("SET",resultSet,len(resultSet))

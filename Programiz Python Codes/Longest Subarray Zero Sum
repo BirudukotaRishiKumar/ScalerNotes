@@ -1,0 +1,19 @@
+Longest Subarray Zero Sum
+def solve(self, A):
+        dictionary={}
+        prefixSum=0
+        maxLength=0
+        for i in range(len(A)):
+            prefixSum+=A[i]
+            if prefixSum in dictionary:
+                lengthOfZeroSubArray=i-dictionary[prefixSum]
+                maxLength=max(maxLength,lengthOfZeroSubArray)
+            else:
+                dictionary[prefixSum]=i
+            if prefixSum == 0:
+                lengthOfZeroSubArray=i+1
+                maxLength=max(maxLength,lengthOfZeroSubArray)
+        return maxLength             
+
+ A = [1, -2, 1, 2]
+[1, -2, 1] is the largest subarray which sums up to 0.

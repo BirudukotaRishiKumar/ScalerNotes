@@ -1,0 +1,16 @@
+#Three Pointer approach
+i=0
+        j=len(A)-1
+        mid=0        
+
+        while(mid<=j):
+            if A[mid]==0:
+                A[mid],A[i]=A[i],A[mid]
+                i+=1
+                mid+=1
+            elif A[mid]==1:
+                mid+=1
+            elif A[mid]==2:
+                A[mid],A[j]=A[j],A[mid]
+                j-=1
+        return A

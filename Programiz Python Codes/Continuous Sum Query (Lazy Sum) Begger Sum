@@ -1,0 +1,18 @@
+#Continuous Sum Query
+        z=[]
+        for i in range(A):
+            z+=[0]
+        #print(z)
+        for i in B:
+            strartingBeggerIndex=i[0]-1
+            endingBeggerIndex=i[1]-1
+            amountToBeggers=i[2]
+            z[strartingBeggerIndex]+=amountToBeggers
+            if endingBeggerIndex<A-1:
+                z[endingBeggerIndex+1]-=amountToBeggers
+            #print(z)
+
+        temp=0
+        for i in range(1,A):
+            z[i]=z[i]+z[i-1]
+        return z

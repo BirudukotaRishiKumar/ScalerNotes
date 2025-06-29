@@ -1,0 +1,39 @@
+#Count of Zero Sum SubArrays
+#Brute Force
+A = [1, 2, -3, 3, 1, -1, -2]
+pa=[]
+temp=0
+for i in A:
+    temp+=i
+    pa+=[temp]
+count=0
+n=len(A)
+for i in range(n):
+    if pa[i]==0:
+        count+=1
+    for j in range(i+1,n):
+        if pa[j]-pa[i]==0:
+            count+=1
+print(count)
+
+#Optimised:
+A = [1, 2, -3, 3, 1, -1, -2]
+pa=[]
+temp=0
+for i in A:
+    temp+=i
+    pa+=[temp]
+
+count=0
+n=len(A)
+dici={}
+for i in pa:
+    if i==0:
+        count+=1
+    if i not in dici:
+        dici[i]=1
+    else:
+        dici[i]+=1
+        count+=dici[i]-1
+print(count)
+

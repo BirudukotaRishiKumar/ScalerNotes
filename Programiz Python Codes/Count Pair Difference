@@ -1,0 +1,24 @@
+#Count Pair Difference
+
+def solve(self, A, B):
+        count=0
+        dici={}
+        for num in A:
+            if num-B in dici:
+                count+=dici[num-B]
+            if num+B in dici:
+                count+=dici[num+B]
+            if num not in dici:
+                dici[num]=1
+            else:
+                dici[num]+=1
+        return count%(10**9+7)
+
+We can use a hash-map and store the elements of the array
+as the key and its frequency as the value. 
+We traverse the array from left to right.
+Now, for every element we count the number of occurences of 
+A[i] + B and A[i] - B to its left side and increment that to our answer.
+
+Time Complexity : O(N)
+Space Complexity : O(N)

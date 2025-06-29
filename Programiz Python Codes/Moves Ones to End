@@ -1,0 +1,17 @@
+#If you wanted to move 1's to end then initialize the i pointer at 1st 1 and j=i+1
+a=[0,1,1,0,0,0,1,0,1,1,1]
+n=len(a)
+i=0
+j=0
+for index in range(n):
+    if a[index]==1:
+        i=index
+        break
+
+for j in range(i+1,n):
+    if a[j]==0:
+        a[i],a[j]=a[j],a[i]
+        i+=1
+print(a)
+
+    

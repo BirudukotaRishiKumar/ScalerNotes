@@ -1,0 +1,25 @@
+Subarray with given sum
+ def solve(self, A, B):
+        prefixSum=0
+        dici={}
+        for i in range(len(A)):
+            prefixSum+=A[i]
+            target=prefixSum-B
+            dici[prefixSum]=i
+            if target==0:
+                start=0
+                end=i
+                return A[start:end+1]
+            if target in dici:
+                start=dici[target]+1 #Subarray si next to this start
+                end=i
+                return A[start:end+1]
+        return [-1]
+
+A = [1, 2, 3, 4, 5]
+B = 5
+Ans=[2,3]
+
+A = [5, 10, 20, 100, 105]
+B = 110
+Ans=-1

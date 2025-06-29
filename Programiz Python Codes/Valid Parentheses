@@ -1,0 +1,21 @@
+#Valid Parentheses
+def validParanthesis(A,s,leftCount,rightCount):
+    if len(s)==2*A:
+        print(s)
+        return
+    
+    if leftCount<A: #Left Should be a max of 3
+        validParanthesis(A,s+"(",leftCount+1,rightCount)
+    if rightCount<leftCount: #Close should be less than open
+        validParanthesis(A,s+")",leftCount,rightCount+1)
+    
+    
+
+A=3
+s=""
+leftCount=0
+rightCount=0
+validParanthesis(A,s,leftCount,rightCount)
+
+    
+    

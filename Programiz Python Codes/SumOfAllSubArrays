@@ -1,0 +1,94 @@
+#DAY9 Find the sum of All Possible Sub Arrays
+#BruteFoce
+a=[1,2,3,4]
+l=len(a)
+for i in range(l): #starting Index
+    for j in range(i+1,l+1): #Ending Index
+        s=0
+        for k in range(i,j):
+            s+=a[k]
+        print("BruteForce: ",a[i:j],sum(a[i:j]),s)
+
+#Optimised: Using prefix Sum
+a=[1,2,3,4]
+l=len(a)
+prefixArray=[]
+prefixArraySum=0
+for i in a:
+    prefixArraySum+=i
+    prefixArray+=[prefixArraySum]
+print("PrefixArray: ",prefixArray) #[1, 3, 6, 10]
+for i in range(l):
+    s=0
+    for j in range(i,l):
+        if i==0:
+            s=prefixArray[j]
+        else:
+            s=prefixArray[j]-prefixArray[i-1]
+        print("Optimised: using prefixArray: ",a[i:j+1],sum(a[i:j+1]),s)
+        
+#Optimised: Using Carryforward
+a=[1,2,3,4]
+l=len(a)
+for i in range(l):
+    s=0
+    for j in range(i,l):
+        s+=a[j]
+        print("Optimised: Carryforward: ",a[i:j+1],sum(a[i:j+1]),s)
+        
+#Total Sum Of SubArrays       
+a=[1,2,3]
+l=len(a)
+ts=0
+for i in range(l):
+    s=0
+    for j in range(i,l):
+        s+=a[j]
+        ts+=s
+print(ts) #20
+
+#Total Sum Of SubArrays: Contribution Technique     
+a=[1,2,3]
+l=len(a)
+ans=0
+for i in range(l):
+     ans+=a[i]*(i+1)*(l-i)
+print("Contribution Technique: ",ans) #20
+
+ #Sum of maximum subarray with length k: My own way       
+a=[3,-2,4,-1,2,6]
+n=len(a)
+k=4
+ans=float("-inf")
+for i in range(n):
+    si=i
+    ei=k+i
+    if ei<=n:
+        ans=max(ans,sum(a[si:ei]))
+        print("Sum of maximum subarray with length k: My own way ",si,ei,a[si:ei],ans)
+        
+#Sum of maximum subarray with length k: BruteForce
+a=[3,-2,4,-1,2,6]
+n=len(a)
+k=4
+ans=float("-inf")
+si=0
+ei=k-1
+ans=0
+while(ei<n):
+    s=0
+    for i in range(si,ei+1):
+        s+=a[i]
+    ans=max(ans,s)
+    si+=1
+    ei+=1
+print("Sum of maximum subarray with length k: ",ans)
+    
+        
+        
+        
+        
+        
+        
+        
+        

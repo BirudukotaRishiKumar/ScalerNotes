@@ -1,0 +1,19 @@
+#Ascending Sort of Chars & Descending sort of Nums
+import functools
+
+def compare_items(item1, item2):
+    if item1[1] < item2[1]: #Ascending Order
+        return -1 #Ascending Order
+    elif item1[1] > item2[1]:
+        return 1
+    else:
+        if item1[0]<item2[0]: #Descending Order
+            return 1 #Descending Order
+        elif item1[0]>item2[0]:
+            return -1
+        else:
+            return 0
+items = [(1, 'rishi'), (2, 'likki'), (3, 'likku'),(4,'ris'),(5,'ris')]
+sorted_items = sorted(items, key=functools.cmp_to_key(compare_items))
+print(sorted_items) #[(2, 'likki'), (3, 'likku'), (5, 'ris'), (4, 'ris'), (1, 'rishi')]
+#Sorting the items based on the character (ascending in this case) and if both characters are same then sorting based on numbers (descending in this case)

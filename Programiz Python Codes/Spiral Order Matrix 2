@@ -1,0 +1,33 @@
+A=4
+m=[[0]*A for _ in range(A)]
+def func(i,j,ans):
+    for count in range(A-1):
+        ans+=1
+        m[i][j]=ans
+        j+=1
+    for count in range(A-1):
+        ans+=1
+        m[i][j]=ans
+        i+=1
+    for count in range(A-1):
+        ans+=1
+        m[i][j]=ans
+        j-=1
+    for count in range(A-1):
+        ans+=1
+        m[i][j]=ans
+        i-=1
+    return ans
+i=j=0
+value=0
+while(A>=1):
+    value=func(i,j,value)
+    A-=2
+    i+=1
+    j+=1
+    
+if A%2!=0:
+    m[i-1][j-1]=value+1
+for row in m:
+    print(row)
+# print(m)

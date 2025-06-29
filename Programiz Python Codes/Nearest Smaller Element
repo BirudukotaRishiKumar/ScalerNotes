@@ -1,0 +1,22 @@
+1) Create a new empty stack st
+
+2) Iterate over array `A`,
+   where `i` goes from `0` to `size(A) - 1`.
+    a) We are looking for value just smaller than `A[i]`. So keep popping from `st` till elements in `st.top() >= A[i]` or st becomes empty.
+    b) If `st` is non-empty, then the top element is our previous element. Else the previous element does not exist. 
+    c) push `A[i]` onto st
+
+def prevSmaller(self, A):
+        ans = []
+        stack = []
+        for i in range(0, len(A), 1): 
+            # pop all the elements from the stack greater than current element
+            while (stack != [] and stack[len(stack) - 1] >= A[i]):
+                stack.pop()
+            if stack == []:
+                ans.append(-1)
+            else:
+                ans.append(stack[len(stack) - 1])
+            stack.append(A[i])
+        return ans
+

@@ -1,0 +1,21 @@
+ans=[]
+        n=len(intervals)
+        newIntervalStart=newInterval[0]
+        newIntervalEnd=newInterval[1]
+
+        for i in range(n):
+            currentStart=intervals[i][0]
+            currentEnd=intervals[i][1]
+
+            if currentEnd<newIntervalStart: #Non overlapping
+                ans.append([currentStart,currentEnd]) #adding intervals before newInterval
+            elif newIntervalEnd<currentStart: #Non overlapping
+                ans.append([newIntervalStart,newIntervalEnd]) #adding the merged elements (From else)
+                for j in range(i,n):
+                    ans.append([intervals[j][0],intervals[j][1]]) #adding intervals after newInterval
+                return ans
+            else: #Over lapping
+                newIntervalStart=min(newIntervalStart,currentStart)
+                newIntervalEnd=max(newIntervalEnd,currentEnd)
+        ans.append([newIntervalStart,newIntervalEnd]) #Ending interval
+        return ans

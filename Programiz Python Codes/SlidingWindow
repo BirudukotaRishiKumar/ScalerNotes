@@ -1,0 +1,11 @@
+#Max Sum Of K length SubArray: Sliding Window
+a=[1, 12, 10, 3, 14, 10,5]
+k=3
+n=len(a)
+s=sum(a[:k])
+ans=s
+for j in range(k,n):
+    s+=a[j]
+    s-=a[j-k]
+    ans=max(ans,s)
+print(ans)

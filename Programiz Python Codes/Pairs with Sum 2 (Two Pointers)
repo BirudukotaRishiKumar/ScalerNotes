@@ -1,0 +1,31 @@
+#Pairs with give sum (Two pointers) Sorted Array
+def solve(self, A, B):
+        n=len(A)
+        i=0
+        j=n-1
+        dici={}
+        for num in A:
+            if num in dici:
+                dici[num]+=1
+            else:
+                dici[num]=1
+        
+
+        c=0
+        while(i<j):
+            summ=A[i]+A[j]
+            if summ==B:
+                if A[i]==A[j]:
+                    n=dici[A[i]] #nc2 
+                    c+=((n)*(n-1))//2
+                    break
+                else:
+                    c+=dici[A[i]]*dici[A[j]]
+                    i+=dici[A[i]]
+                    j-=dici[A[j]]
+            elif summ<B:
+                i+=1
+            else:
+                j-=1
+                    
+        return c%1000000007

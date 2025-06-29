@@ -1,0 +1,59 @@
+#Longest Palindromic substring
+#Brute Force
+def isPalindrome(w,i,j):
+    while i<j:
+        if w[i]!=w[j]:
+            return False
+        i+=1
+        j-=1
+    return True
+    
+s = "anamadamspe"
+n=len(s)
+ans=1
+finalAns=s[0]
+for i in range(n):
+    for j in range(i,n):
+        if isPalindrome(s,i,j):
+            ans=max(ans,j-i+1)
+            subString=s[i:j+1]
+            if len(subString)==ans:
+                finalAns=s[i:j+1]
+if len(s)==2 and s[0]!=s[1]:
+    finalAns=s[0]
+print(finalAns,ans)
+
+
+
+#Optimised (Odd+Even)
+def getLengthOfPalindrome(length,l,r):
+    while(l>=0 and r<n):
+        if s[l]==s[r]:
+            length+=2
+        else:
+            break
+        l-=1
+        r+=1
+    return length
+    
+s="acca" #Input
+s="anamadamspe"
+n=len(s)
+ans=1
+if n%2==0:
+    for i,j in zip(range(n),range(1,n)):
+        length=0
+        l=i
+        r=j
+        result=getLengthOfPalindrome(length,l,r)
+        ans=max(ans,result)
+    print(s,"is EvenLength: MaxLengthSubString",ans)
+else:
+    for c in range(n):
+        length=1
+        l=c-1
+        r=c+1
+        result=getLengthOfPalindrome(length,l,r)
+        ans=max(ans,result)
+    print(s,"is OddLength: MaxLengthSubString",ans)
+    

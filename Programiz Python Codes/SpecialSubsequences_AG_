@@ -1,0 +1,36 @@
+#Special Subsequences "AG"
+#BruteForce Approach
+w="AG"
+A = "ABCGAG"
+n=len(A)
+c=0
+for i in range(n):
+    for j in range(i+1,n):
+        if A[i]=="A" and A[j]=="G":
+            c+=1
+print(c)
+
+#A bit better 
+w="AG"
+A = "ABCGAG"
+n=len(A)
+c=0
+for i in range(n):
+    if A[i]=="A":
+        for j in range(i+1,n):
+             if A[j]=="G":
+                c+=1
+print(c)
+
+#Optimised Approach
+w="AG"
+A = "ABCGAG"
+n=len(A)
+countOfA=0
+countOfAG=0
+for i in range(n):
+    if A[i]=="A":
+        countOfA+=1
+    elif A[i]=="G":
+        countOfAG+=countOfA
+print(countOfAG)

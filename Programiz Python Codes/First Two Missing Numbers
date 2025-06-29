@@ -1,0 +1,45 @@
+def solve(self, A):
+        n = len(A)
+        XOR = 0
+        for i in range(n):
+            XOR ^= A[i]
+        for i in range(1, n + 3):
+            XOR ^= i
+        # XOR has the bitwise XOR of two missing elements. Any set bit 
+        # in it must be set in one and unset in the other missing number
+      
+        # We get the rightmost set bit
+        rightmost_set_bit = XOR & ~(XOR-1)
+        
+        # Divide elements in two sets by comparing rightmost
+        # set bit of XOR with bit at same position in each element.
+        x, y = 0, 0
+        for i in range(n):
+            if (A[i] & rightmost_set_bit) > 0:
+                x = x ^ A[i]  
+            else:
+                y = y ^ A[i]  
+        for i in range(1, n + 3):
+            if (i & rightmost_set_bit) > 0:
+                x = x ^ i 
+            else:
+                y = y ^ i
+                
+        return [min(x, y), max(x, y)]
+
+We will calculate the xor of all the elements of the array and
+xor this value will all integers from 1 to N+2.
+Finally, we will have the xor of the two missing numbers.
+
+Let the missing numbers be X and Y
+A bit is set in xor only if corresponding bits in X and Y are different.
+
+So, we find one of the set bits of X^Y and then divide all the element with
+that bit set in one group and those with that bit unset in another group.
+
+Here, both X and Y will belong to different group. We can easily find the 
+missing number in each group.
+
+
+Time Complexity : O(N)
+Space Complexity : O(1)

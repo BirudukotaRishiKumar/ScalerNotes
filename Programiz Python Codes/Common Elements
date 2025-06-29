@@ -1,0 +1,42 @@
+#Common Elements
+A = [1, 2, 2, 1]
+B = [2, 3, 1, 2]
+dici1={}
+for i in A:
+    if i not in dici1:
+        dici1[i]=1
+    else:
+        dici1[i]+=1
+
+dici2={}
+for i in B:
+    if i not in dici2:
+        dici2[i]=1
+    else:
+        dici2[i]+=1
+# print("Dici1",dici1)
+# print("Dici2",dici2)
+res=[]
+for i in dici1:
+    if i in dici2:
+        #if dici1[i]==dici2[i]:
+        res+=[i]*(min(dici1[i],dici2[i]))
+print(res)
+
+#Create a dict of A and iterate over B and check if it is in dict of A, then add it to res and decrease the no of B's
+n = len(A)
+m = len(B)
+hashmap = {}
+for i in range(n):
+    if(hashmap.get(A[i]) == None):
+        hashmap[A[i]] = 1
+    else:
+        hashmap[A[i]] += 1
+
+ans =[] 
+for i in range(m):
+    if(hashmap.get(B[i]) != None and hashmap[B[i]] != 0):
+        ans.append(B[i])
+        hashmap[B[i]] -= 1
+    
+print(ans)

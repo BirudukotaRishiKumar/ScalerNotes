@@ -1,0 +1,33 @@
+A = [1, 2, 3, 1, 2, 4]
+# A=[1,2]
+#Single Number 3
+xor=0 #7 #111
+for num in A:
+    xor=xor^num
+
+index=0
+for i in range(32):
+    if (xor & (1<<i))!=0:
+        print(xor & (1<<i))
+        index=i
+        break
+    
+setBitBucket=0
+unSetBitBucket=0        
+for num in A:
+    if (num & (1<<i))!=0:
+        setBitBucket^=num
+    else:
+        unSetBitBucket^=num
+if setBitBucket>unSetBitBucket:
+    print([unSetBitBucket,setBitBucket])
+else:
+    print([setBitBucket,unSetBitBucket])
+#Approach
+If we use additional memory, we can directly store the count and find the integers which occur only once.
+To solve without additional memory, We can use the xor operation, as the Xor of two integers gives 0.
+Take the Xor of all the integers of the array. Integers that occur twice will not contribute anything to the xor value.
+Suppose that the ith bit is set in the xor value, which means that exactly one of the two required numbers has that bit set.
+If we then divide the array integers into two groups: one group contains all integers with the ith bit set, and the other group contains integers with 0 at the ith bit.
+Each group includes one of the two required numbers, and for the rest of the numbers, both of their occurrences will be in the same group.
+Now, Xor of integers in the first group gives a number that occurs exactly once. Xor of integers in the second group provides another number that appears exactly once.

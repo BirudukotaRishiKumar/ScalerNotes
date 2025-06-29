@@ -1,0 +1,14 @@
+#Subsets
+def subsets(arr,i,res):
+    if i==len(arr):
+        print(res)
+        return
+    res.append(arr[i])
+    subsets(arr,i+1,res)
+    del res[-1]
+    subsets(arr,i+1,res)
+    
+arr=[1,2,3]
+i=0
+res=[]
+subsets(arr,i,res)

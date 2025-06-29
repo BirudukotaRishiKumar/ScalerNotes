@@ -1,0 +1,41 @@
+#Row Sum and Column Sum of a matrix
+arr=[
+    [1,2,3,4],
+[5,6,7,8],
+[9,2,3,4]
+]
+
+
+#Finding the number of rows and columns
+r=len(arr) #3
+c=len(arr[0]) #4
+
+#1. Row Sum of a matrix
+for i in range(r):
+    rowSum=0
+    for j in range(c):
+        rowSum+=arr[i][j]
+        #rowSum+=arr[i][j] (Index out of range)
+    print("Row Wise Sum: ",rowSum)
+
+#2. Column Sum of a matrix
+for i in range(c):
+    colSum=0
+    for j in range(r):
+        colSum+=arr[j][i]
+        #colSum+=arr[i][j] #(Index out of range)
+    print("Column Wise Sum: ",colSum)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

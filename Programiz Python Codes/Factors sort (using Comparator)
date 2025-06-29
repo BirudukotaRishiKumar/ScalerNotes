@@ -1,0 +1,32 @@
+#Sorting based on Ascending Factors
+import functools
+
+def getFactors(num):
+    countOfFactors=2
+    for i in range(2,num):
+        if num%i==0:
+            countOfFactors+=1
+    return countOfFactors
+
+def compare(a,b):
+    factA=getFactors(a)
+    factB=getFactors(b)
+    if factA<factB: #Ascending Order of Factors
+       return -1
+    if factA>factB:
+        return 1
+    else: #If both factors are same then
+        if a<b: #Ascending Order for numbers
+            return -1
+        elif a>b:
+            return 1
+        else:
+            return 0
+        return 0
+
+arr=[4,9,3,10,6,21,6]
+arraySortedBasedOnNoOfFactors=sorted(arr,key=functools.cmp_to_key(compare))
+print(arr)
+print(arraySortedBasedOnNoOfFactors)
+    
+            

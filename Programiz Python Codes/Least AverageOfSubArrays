@@ -1,0 +1,35 @@
+#Given an array A of size N, find the subarray of size B with the least average.
+#Brute Force Approach
+A = [20,1,5,2,7,5,17]
+B = 6
+
+n=len(A)
+ans=float("inf")
+index=0
+for i in range(n):
+    for j in range(i,n):
+        subArray=A[i:j+1]
+        if len(subArray)==B:
+            BLensubArray=A[i:j+1]
+            avg=sum(subArray)/B
+            if avg<ans:
+                ans=avg
+                index=i
+            #print(BLensubArray,avg,ans,index)
+print(index)
+#Optimised Approach: Sliding Window 
+n = len(A)
+ans=float("inf")
+s=0
+for i in range(B):
+    s+=A[i]
+ans=s/B
+index=0
+for i in range(B,n):
+    s+=A[i]
+    s-=A[i-B]
+    avg=s/B
+    if avg<ans:
+        ans=avg
+        index=i-B+1
+print(index)

@@ -1,0 +1,119 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        temp = self.head
+        while temp.next:
+            temp = temp.next
+        temp.next = new_node
+
+    def find_element_at_index(self, index):
+        current = self.head
+        count = 0
+        while current:
+            if count == index:
+                return current.data
+            count += 1
+            current = current.next
+        return None
+
+    def is_element_present(self, element):
+        current = self.head
+        while current:
+            if current.data == element:
+                return True
+            current = current.next
+        return False
+
+    def size(self):
+        count = 0
+        current = self.head
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+    def insert_at_index(self, index, data):
+        new_node = Node(data)
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+            return self.head
+        current = self.head
+        count = 0
+        while current:
+            if count == index - 1:
+                new_node.next = current.next
+                current.next = new_node
+                return self.head
+            count += 1
+            current = current.next
+        return self.head
+
+    def delete_node(self, key):
+        current = self.head
+
+        if current and current.data == key:
+            self.head = current.next
+            current = None
+            return
+        prev = None
+        while current and current.data != key:
+            prev = current
+            current = current.next
+
+        if not current:
+            return
+
+        prev.next = current.next
+        current = None
+
+    def reverse(self):
+        prev = None
+        current = self.head
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        self.head = prev
+
+# Example usage of the LinkedList class:
+
+# Create a linked list and append some elements to it.
+llist = LinkedList()
+llist.append(1)
+llist.append(2)
+llist.append(3)
+llist.append(4)
+
+# Find the element at index 2.
+print(f"Element at index 2: {llist.find_element_at_index(2)}")
+
+# Check if element 3 is present in the linked list.
+print(f"Is element 3 present? {llist.is_element_present(3)}")
+
+# Find the size of the linked list.
+print(f"Size of the linked list: {llist.size()}")
+
+# Insert a new node with value 5 at index 2.
+llist.insert_at_index(2, 5)
+print(f"Element at index 2 after insertion: {llist.find_element_at_index(2)}")
+
+# Delete the node with value 3.
+llist.delete_node(3)
+print(f"Is element 3 present after deletion? {llist.is_element_present(3)}")
+
+# Reverse the linked list.
+llist.reverse()
+print(f"Element at index 0 after reversing: {llist.find_element_at_index(0)}")

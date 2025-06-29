@@ -1,0 +1,25 @@
+#First Occurance
+def findFirstOccuranceOfTargetUsingBinarySearch(a,n,target):
+    start=0
+    end=n-1
+    while(start<=end):
+        mid=start+(end-start)//2
+        if a[mid]==target:
+            if mid==0:
+                return mid
+            elif a[mid-1]==a[mid]: #Go Left
+                end=mid-1
+            else:
+                return mid
+        elif target<a[mid]: #Target is Left
+            end=mid-1 #Go Left
+        else: #Target is Right
+            start=mid+1 #Go right
+    return -1
+
+a=[0,0,1,2,2,3,3,3,4,4,6,6,8,8,8,9,10]
+a=[1,2,6]
+target=6
+n=len(a)
+ans=findFirstOccuranceOfTargetUsingBinarySearch(a,n,target)
+print(ans)

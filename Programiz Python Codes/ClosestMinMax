@@ -1,0 +1,36 @@
+#Find the length of the min subarray which includes both min and max?
+#Brute Force Approach:
+A = [2, 6, 1, 6, 9]
+n=len(A)
+minVal=min(A)
+maxVal=max(A)
+ans=float("inf")
+for i in range(n):
+    for j in range(i,n):
+        subArray=A[i:j+1]
+        #print(subArray)
+        if minVal in subArray and maxVal in subArray:
+            #print("Result",subArray,len(subArray))
+            ans=min(ans,len(subArray))
+print(ans)
+
+#Optimised Approach: 
+A = [2, 6, 1, 6, 9]
+A=[4,4,4,4,4]
+n=len(A)
+minVal=min(A)
+maxVal=max(A)
+ans=float("inf")
+res=[]
+for i in range(n):
+    if A[i]==minVal:
+        for j in range(i,n):
+            if A[j]==maxVal:
+                length=j-i+1
+                res+=[length]
+    elif A[i]==maxVal:
+        for j in range(i,n):
+            if A[j]==minVal:
+                length=j-i+1
+                res+=[length]
+print(res,min(res))

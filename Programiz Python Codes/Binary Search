@@ -1,0 +1,20 @@
+#Binary Search
+def findTargetUsingBinarySearch(a,n,target):
+    start=0
+    end=n-1
+    while(start<=end):
+        #mid=start+(end-start)//2
+        mid=(start+end)//2
+        if a[mid]==target:
+            return mid
+        elif target<a[mid]: #Target is Left
+            end=mid-1 #Go Left
+        else: #Target is Right
+            start=mid+1 #Go right
+    return -1
+
+a=[2,4,5,6,7,67]
+target=7
+n=len(a)
+ans=findTargetUsingBinarySearch(a,n,target)
+print(ans)

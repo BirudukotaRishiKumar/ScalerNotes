@@ -1,0 +1,51 @@
+#3 Sum Scaler: Closest sum to B
+A=[1,2,4,5,2]
+B=6
+A=[-1, 2, 1, -4]
+B=1
+A.sort()
+n=len(A)
+c=0
+ans=float("-inf")
+for i in range(n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            summ=A[i]+A[j]+A[k]
+            # if summ<=B and i!=j and j!=k and i!=k and i<j<k:
+            if summ<=B:
+                ans=max(ans,summ)
+                print(A[i],A[j],A[k])
+            else:
+                break
+print(ans)
+          
+print("-----------------------------------")   
+#Find
+A=[1,1,2,3,4,5,5,6,6,6,7,10]
+B=20
+A = [-1, 2, 1, -4]
+B = 1
+A=[2,2,2,3]
+B=8
+#[-4, -1, 1, 2]
+A.sort()
+print(A)
+n=len(A)
+c=0
+MaxSumLessThanSumm=float("-inf")
+for i in range(n):
+    find=B-A[i]
+    start=i+1
+    end=n-1
+    while(start<end):
+        summ=A[start]+A[end]
+        if summ==find:
+            print("Ans: ",A[i],A[start],A[end])
+            break
+        elif summ<find:
+            print(summ,MaxSumLessThanSumm)
+            MaxSumLessThanSumm=max(MaxSumLessThanSumm,A[i]+summ)
+            start+=1
+        else:
+            end-=1
+print("MaxSumLessThanSumm",MaxSumLessThanSumm)

@@ -1,0 +1,18 @@
+hashmap={}
+        hashmap["}"]="{"
+        hashmap["]"]="["
+        hashmap[")"]="("
+
+        stack=[]
+        for eachChar in A:
+            if eachChar=="{" or eachChar=="(" or eachChar=="[":
+                stack.append(eachChar)
+            else:
+                if stack and stack[-1]==hashmap[eachChar]:
+                    stack.pop()
+                else:
+                    return 0
+        if len(stack)==0:
+            return 1
+        else:
+            return 0

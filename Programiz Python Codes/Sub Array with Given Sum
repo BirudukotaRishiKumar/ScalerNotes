@@ -1,0 +1,49 @@
+#Sub array with given sum: (Return SubArray)
+a=[1,2,3,4,5]
+#a=[5,10,20,100,105]
+temp=0
+pa=[]
+n=len(a)
+k=14
+for num in a:
+    temp+=num
+    pa.append(temp)
+dici={}
+for i in range(n):
+    if pa[i]==k:
+        print(a[:i+1])
+        break
+    target=pa[i]-k
+    if target in dici:
+        print(a[dici[target]+1:i+1])
+        break
+    dici[pa[i]]=i
+print([-1])
+
+
+#Two pointers
+def subArrayWithKSum(self, A, B):
+    temp=0
+    pa=[]
+    n=len(A)
+    for num in A:
+        temp+=num
+        pa.append(temp)
+    i=0
+    j=1
+    if n==1:
+        if B==A[0]:
+            return A
+        else:
+            return -1
+    while(i<n and j<n):
+        diff=pa[j]-pa[i]
+        if pa[j]==B:
+            return A[:j+1]
+        if diff==B:
+            return A[i+1:j+1]
+        elif diff<B:
+            j+=1
+        else:
+            i+=1
+    return [-1]

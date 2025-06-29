@@ -1,0 +1,42 @@
+# Subarray with given sum and length
+#Brute Force: O(N^2) O(N)
+A = [4, 3, 2, 6, 1]
+B = 3
+C = 11
+n=len(A)
+
+doesExists=False
+for i in range(n-B+1):
+    #print(A[i:i+B])
+    if sum(A[i:i+B])==C:
+        doesExists=True
+        break
+if doesExists:
+    print(1)
+else:
+    print(0)
+        
+#Optimised Approach
+print("#Optimised Approach")
+A = [4, 3, 2, 6, 1]
+A=[6]
+B = 1
+C = 6
+n=len(A)
+isFound=False
+sumOfBLengthSubArray=0
+if n==1 and A[0]==C:
+    isFound=True
+for i in range(B):
+    sumOfBLengthSubArray+=A[i]
+
+for j in range(B,n):
+    sumOfBLengthSubArray+=A[j]
+    sumOfBLengthSubArray-=A[j-B]
+    if sumOfBLengthSubArray==C:
+        isFound=True
+        break
+if isFound:
+    print(1)
+else:
+    print(0)

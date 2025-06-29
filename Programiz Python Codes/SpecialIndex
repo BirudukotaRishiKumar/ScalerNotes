@@ -1,0 +1,58 @@
+# find the count of array indices such that removing an element from these indices makes the sum of even-indexed and odd-indexed array elements equal.
+#BruteForce Approach
+A = [1,2,3,4,5,6]
+n=len(A)
+ans=0
+for i in range(n):
+    newArray=A[:i]+A[i+1:]
+    newL=n-1
+    evenSum=0
+    oddSum=0
+    for j in range(newL):
+        if j%2==0:
+            evenSum+=newArray[j]
+        else:
+            oddSum+=newArray[j]
+    if evenSum==oddSum:
+        ans+=1
+    print(newArray,evenSum,oddSum)
+print(ans)
+#--------------------------------------
+print("--------------------------------------")
+#Optimised Approach
+A = [1,2,3,4,5,6]
+n=len(A)
+evenPrefixArray=[0]*n
+oddPrefixArray=[0]*n
+
+evenPrefixArray[0]=A[0]
+oddPrefixArray[0]=0
+for i in range(n):
+    if i%2==0:
+        evenPrefixArray[i]=evenPrefixArray[i-1]+A[i]
+        oddPrefixArray[i]=oddPrefixArray[i-1]
+        
+    else:
+        evenPrefixArray[i]=evenPrefixArray[i-1]
+        oddPrefixArray[i]=oddPrefixArray[i-1]+A[i]
+    #print(evenPrefixArray,oddPrefixArray)
+ans=0
+for i in range(n):
+    if i==0:
+        evenSum=oddPrefixArray[n-1]-oddPrefixArray[i]
+        oddSum=evenPrefixArray[n-1]-evenPrefixArray[i]
+    else:
+        evenSum=evenPrefixArray[i-1]+oddPrefixArray[n-1]-oddPrefixArray[i]
+        oddSum=oddPrefixArray[i-1]+evenPrefixArray[n-1]-evenPrefixArray[i]
+    if evenSum==oddSum:
+        ans+=1
+    print("Optimised: ",evenSum,oddSum)
+print(ans)
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+def copyRandomList(self, head):
+        if not head:
+            return head
+        temp=head
+        hashmap={}
+        while temp:
+            newNode=RandomListNode(temp.label)
+            hashmap[temp]=newNode
+            temp=temp.next
+        temp=head
+        while temp:
+            hashmap[temp].next=hashmap.get(temp.next)
+            hashmap[temp].random=hashmap.get(temp.random)
+            temp=temp.next
+        return hashmap[head]

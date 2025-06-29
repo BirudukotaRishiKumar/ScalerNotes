@@ -1,0 +1,20 @@
+#BuyandSellStocks! (Find the Maximum Profit)
+#BruteForce
+A = [1, 4, 5, 2, 4]
+n=len(A)
+maxProfit=0
+for i in range(n):
+    for j in range(i,n):
+        profit=A[j]-A[i]
+        maxProfit=max(maxProfit,profit)
+        #print(A[i],A[j],A[j]-A[i])
+print(maxProfit)
+
+#Optimised Approach
+A = [1, 4, 5, 2, 4]
+greatest_on_right = 0
+profit = 0
+for i in range(len(A) - 1, -1, -1):
+    greatest_on_right = max(A[i], greatest_on_right)
+    profit = max(profit, greatest_on_right - A[i])
+print(profit)

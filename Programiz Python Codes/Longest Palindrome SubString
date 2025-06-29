@@ -1,0 +1,55 @@
+s = "cbbd"
+n=len(s)
+ans=float("-inf")
+fl=0
+fr=0
+for i in range(n):
+    for j in range(i,n):
+        subS=s[i:j+1]
+        l=j-i+1
+        if subS==subS[::-1] and l>ans:
+            ans=l
+            fl=i
+            fr=j
+            #print("Palindrome",subS,l)
+#print(ans,s[fl:fr+1])
+
+#Optimised
+s = "ab"
+n=len(s)
+ans=float("-inf")
+lft=0
+rgt=0
+for c in range(n):
+    l=c-1
+    r=c+1
+    lengthOfPalindrome=1
+    while l>=0 and r<=n-1:
+        if s[l]==s[r]:
+            lengthOfPalindrome+=2
+        else:
+            break
+        l-=1
+        r+=1
+    if lengthOfPalindrome>ans:
+        ans=lengthOfPalindrome
+        lft=l
+        rgt=r
+
+for c in range(1,n):
+    l=c-1
+    r=c
+    lengthOfPalindrome=0
+    while l>=0 and r<=n-1:
+        if s[l]==s[r]:
+            lengthOfPalindrome+=2
+        else:
+            break
+        l-=1
+        r+=1
+    if lengthOfPalindrome>ans:
+        ans=lengthOfPalindrome
+        lft=l
+        rgt=r
+print(ans,s[lft+1:rgt])
+        

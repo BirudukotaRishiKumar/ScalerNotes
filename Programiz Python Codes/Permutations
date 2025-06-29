@@ -1,0 +1,19 @@
+#Permutations
+def permutations(s,i,visited,ans,n):
+    if i==n:
+        print(ans)
+        return 
+    for a in range(n):
+        if visited[a]==False:
+            visited[a]=True
+            ans[i]=s[a]
+            permutations(s,i+1,visited,ans,n)
+            visited[a]=False
+            
+s="abc"
+s=list(s)
+n=len(s)
+i=0
+visited=[False]*n
+ans=[0]*n
+permutations(s,i,visited,ans,n)
